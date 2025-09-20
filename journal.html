@@ -1,0 +1,22 @@
+
+```html
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your Gratitude Journal</h2>
+<form method="post" action="{{ url_for('entries.add') }}">
+  <textarea name="content" rows="4" placeholder="Today I'm grateful for..." required></textarea>
+  <button type="submit">Add entry</button>
+</form>
+
+<ul class="entries">
+  {% for e in entries %}
+    <li>
+      <time>{{ e.created_at.strftime('%Y-%m-%d') }}</time>
+      <p>{{ e.content }}</p>
+    </li>
+  {% else %}
+    <li>No entries yet — add your first!</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+```

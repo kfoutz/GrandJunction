@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    env_file: .env
+    depends_on:
+      - db
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    networks:
+      - gjnet
+
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - gjnet
+
+  nginx:
+    image: nginx:stable
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./app/static:/app/app/static:ro
+      - ./letsencrypt:/etc/letsencrypt
+    depends_on:
+      - web
+    networks:
+      - gjnet
+
+volumes:
+  pgdata:
+
+networks:
+  gjnet:
+    driver: bridge
+
+  -

@@ -1,0 +1,26 @@
+gratitude-prod/
+├── README.md
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── gunicorn.conf.py
+├── nginx/default.conf
+├── requirements.txt
+├── manage.py
+├── run.sh
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── models.py
+│   ├── auth.py
+│   ├── entries.py
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── login.html
+│   │   ├── register.html
+│   │   └── journal.html
+│   └── static/
+│       └── style.css
+└── nginx/
+    └── default.conf

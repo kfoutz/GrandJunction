@@ -1,0 +1,9 @@
+
+```css
+body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+nav { display:flex; justify-content:flex-end; gap:1rem; margin-bottom: 1rem; }
+textarea { width:100%; }
+.entries { list-style:none; padding:0; }
+.entries li { border-bottom: 1px solid #eee; padding: .75rem 0; }
+.flashes { color: #b00; }
+```
